@@ -6,3 +6,5 @@ from .models import OrdenDeTrabajo, Suministro, ConsumoSuministro
 admin.site.register(OrdenDeTrabajo)
 admin.site.register(Suministro)
 admin.site.register(ConsumoSuministro)
+
+#operario_test : operario1234

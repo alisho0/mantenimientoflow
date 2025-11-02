@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Órdenes de Trabajo</h2>
+
+  <div class="mb-3">
+    {% if perms.mantenimiento.add_ordendetrabajo %}
+      <a href="{% url 'crear_orden' %}" class="btn btn-primary">Crear Orden</a>
+    {% endif %}
+    {% if perms.mantenimiento.add_consumosuministro %}
+      <a href="{% url 'registrar_consumo' %}" class="btn btn-info">Registrar Consumo</a>
+    {% endif %}
+  </div>
+
+  <ul class="list-group">
+    {% for orden in ordenes %}
+      <li class="list-group-item">
+        {{ orden.titulo }} (<b>{{ orden.estado }}</b>) - <i>Prioridad: {{ orden.prioridad }}</i>
+        {% if perms.mantenimiento.change_ordendetrabajo %}
+          <a href="{% url 'asignar_orden' orden.id %}" class="btn btn-secondary btn-sm float-end">Asignar/Cerrar</a>
+        {% endif %}
+      </li>
+    {% empty %}
+      <li class="list-group-item">No hay órdenes para mostrar.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
