@@ -27,6 +27,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Lo que pide la profe
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'orden_list'
+LOGOUT_REDIRECT_URL = 'login'
+
+# sesión 15 minutos
+SESSION_COOKIE_AGE = 900
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# templates & static ya vienen por defecto; asegurate de tener 'DIRS' apuntando a templates/
+
 
 # Application definition
 
@@ -37,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mantenimiento'
 ]
 
 MIDDLEWARE = [
