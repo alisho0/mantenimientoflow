@@ -27,14 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Lo que pide la profe
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'orden_list'
-LOGOUT_REDIRECT_URL = 'login'
+# configuracion de autenticacion
+LOGIN_URL = 'login'  # url a la que redirige si el usuario no esta autenticado
+LOGIN_REDIRECT_URL = 'orden_list'  # url a la que redirige después de login exitoso
+LOGOUT_REDIRECT_URL = 'login'  # url a la que redirige despues de logout
 
-# sesión 15 minutos
-SESSION_COOKIE_AGE = 900
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# configuracion de sesion
+MINUTOS_SESION = 15
+SESSION_COOKIE_AGE = MINUTOS_SESION * 60  # 15 minutos convertidos a segundos (15 * 60 = 900)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # la sesion expira al cerrar el navegador
 
 # templates & static ya vienen por defecto; asegurate de tener 'DIRS' apuntando a templates/
 

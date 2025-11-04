@@ -20,7 +20,7 @@ class OrdenDeTrabajo(models.Model):
     ]
     ESTADO = [
         ('Pendiente', 'Pendiente'),
-        ('En Progreso', 'En Progreso'),
+        ('En Proceso', 'En Proceso'),
         ('Cerrada', 'Cerrada')
     ]
 

@@ -31,9 +31,15 @@ class ConsumoSuministroForm(forms.ModelForm):
     def __init__(self, *args, user=None, **kwargs):
         super().__init__(*args, **kwargs)
         if user:
+            # filtrar órdenes que no esten cerradas y donde el usuario sea el operario asignado
             self.fields['orden_de_trabajo'].queryset = OrdenDeTrabajo.objects.filter(
-                operario_asignado=user, estado__in=['Pendiente', 'En Progreso']
+                operario_asignado=user, 
+                estado__in=['Pendiente', 'En Proceso']
             )
+            # configurar los campos para mejor visualización
+            self.fields['orden_de_trabajo'].label = "Orden de trabajo"
+            self.fields['suministro'].label = "Suministro"
+            self.fields['cantidad_usada'].label = "Cantidad a usar"
 
     def clean(self):
         cleaned_data = super().clean()
