@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-!(jzak#u-bl(y+t%cak_v!)j3g=vn81a7+a)5%kix=d%r)d_%&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'mantenimientoflow.onrender.com']
 
 # configuracion de autenticacion
 LOGIN_URL = 'login'  # url a la que redirige si el usuario no esta autenticado
