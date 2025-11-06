@@ -8,6 +8,11 @@ class OrdenDeTrabajoForm(forms.ModelForm):
     class Meta:
         model = OrdenDeTrabajo
         fields = ['titulo', 'descripcion_falla', 'prioridad']
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class': 'form-control'}),
+            'descripcion_falla': forms.Textarea(attrs={'class': 'form-control'}),
+            'prioridad': forms.Select(attrs={'class': 'form-select'}),
+        }
 
     def clean_descripcion_falla(self):
         desc = self.cleaned_data['descripcion_falla']
@@ -27,6 +32,11 @@ class ConsumoSuministroForm(forms.ModelForm):
     class Meta:
         model = ConsumoSuministro
         fields = ['orden_de_trabajo', 'suministro', 'cantidad_usada']
+        widgets = {
+            'orden_de_trabajo': forms.Select(attrs={'class': 'form-select'}),
+            'suministro': forms.Select(attrs={'class': 'form-select'}),
+            'cantidad_usada': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
 
     def __init__(self, *args, user=None, **kwargs):
         super().__init__(*args, **kwargs)
@@ -59,6 +69,11 @@ class AsignacionYEstadoForm(forms.ModelForm):
     class Meta:
         model = OrdenDeTrabajo
         fields = ['operario_asignado', 'estado', 'fecha_cierre_real']
+        widgets = {
+            'operario_asignado': forms.Select(attrs={'class': 'form-select'}),
+            'estado': forms.Select(attrs={'class': 'form-select'}),
+            'fecha_cierre_real': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
