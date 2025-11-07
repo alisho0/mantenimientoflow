@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import OrdenDeTrabajo, ConsumoSuministro
+from .models import OrdenDeTrabajo, ConsumoSuministro, Suministro
 from django.contrib.auth.models import User
 import datetime
 
@@ -90,3 +90,14 @@ class AsignacionYEstadoForm(forms.ModelForm):
             if fecha_cierre < self.instance.fecha_creacion:
                 raise ValidationError("La fecha de cierre debe ser posterior a la creación.")
         return cleaned_data
+    
+
+
+class SuministroForm(forms.ModelForm):
+    class Meta:
+        model = Suministro
+        fields = ['nombre', 'stock']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'stock': forms.TextInput(attrs={'class': 'form-control'}),
+        }

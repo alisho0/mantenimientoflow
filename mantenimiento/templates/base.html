@@ -13,7 +13,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="{% url 'orden_list' %}"> MantenimientoFlow</a>
-      <div class="d-flex">
+      <div class="d-flex gap-1">
         {% if user.is_authenticated %}
           <span class="text-white me-3">Hola {{ user.username }}!!</span>
           <form action="{% url 'logout' %}" method="post" class="d-inline">
@@ -22,6 +22,9 @@
           </form>
         {% else %}
           <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm">Iniciar sesión</a>
+        {% endif %}
+        {% if perms.mantenimiento.view_suministro %}
+          <a class="btn btn-outline-light btn-sm" href="{% url 'listar_suministros' %}">Suministros</a>
         {% endif %}
       </div>
     </div>
